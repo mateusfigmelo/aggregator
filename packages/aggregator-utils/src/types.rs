@@ -53,7 +53,15 @@ pub struct Swap {
     pub expected_output_amount: Quantity,
 }
 
-pub struct SwapResponse {
+pub enum SwapResponse {
+    /// The swap was successful, return the swap details
+    Success(SwapResponseSuccess),
+
+    /// The swap failed, return a reason
+    Failure(String),
+}
+
+pub struct SwapResponseSuccess {
     /// The route of the swap, from input token to output token.
     /// For example, for a two-hop swap from USDC -> DOGE -> WETH,
     /// the route would be:

@@ -34,6 +34,7 @@ impl RequestProcessor for TakehomeRequestProcessor {
         //
         // TODO: Do something with the request data!
         //
-        Err(Error::NoRouteFound)
+        // Err(Error::NoRouteFound)
+        Ok(SwapResponse::Failure("No implementation".to_string()))
     }
 }
