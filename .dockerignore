@@ -1,0 +1,12 @@
+target/
+.git/
+.gitignore
+README.md
+MONITORING.md
+*.md
+.env
+.rustc_info.json
+**/node_modules/
+**/dist/
+**/.DS_Store
+**/Thumbs.db 
