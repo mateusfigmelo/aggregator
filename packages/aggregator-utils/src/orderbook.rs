@@ -43,4 +43,24 @@ impl OrderbookState {
     pub fn bids(&self) -> Vec<&OrderbookLevel> {
         self.bids.values().collect()
     }
+
+    pub fn insert_bid(&mut self, price: Price, size: Quantity) {
+        self.bids.insert(
+            std::cmp::Reverse(price),
+            OrderbookLevel {
+                px: price,
+                sz: size,
+            },
+        );
+    }
+
+    pub fn insert_ask(&mut self, price: Price, size: Quantity) {
+        self.asks.insert(
+            price,
+            OrderbookLevel {
+                px: price,
+                sz: size,
+            },
+        );
+    }
 }

@@ -1,11 +1,14 @@
 use std::fmt::Display;
 
-#[derive(Clone, Copy, PartialEq)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Address([u8; 20]);
 
 impl Address {
     pub fn new_random() -> Self {
         Self(rand::random())
+    }
+    pub fn from_bytes(bytes: [u8; 20]) -> Self {
+        Self(bytes)
     }
 }
 
@@ -39,6 +42,7 @@ pub enum Side {
     Ask,
 }
 
+#[derive(Debug, Clone, PartialEq)]
 pub struct Swap {
     pub input_token: Address,
     pub output_token: Address,
